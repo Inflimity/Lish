@@ -67,7 +67,7 @@
         <!-- Topbar End -->
 
 
-        <!-- Navbar & Hero Start -->
+      <!-- Navbar & Hero Start -->
         <div class="container-fluid sticky-top px-0">
             <div class="position-absolute bg-dark" style="left: 0; top: 0; width: 100%; height: 100%;">
             </div>
@@ -84,13 +84,15 @@
                         <div class="navbar-nav ms-auto py-0">
                             <a href="index.html" class="nav-item nav-link">Home</a>
                             <a href="about.html" class="nav-item nav-link">About</a>
+                            <a class="language-switcher nav-item nav-link" id="moreLanguages">Translate</a>
                             <a href="service.html" class="nav-item nav-link">Services</a>
-                            <a href="project.html" class="nav-item nav-link active">Projects</a>
+
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Go to</a>
                                 <div class="dropdown-menu m-0">
                                     <a href="blog.html" class="dropdown-item">Our Blog</a>
-                                    <a href="team.html" class="dropdown-item">Our Team</a>
+                                    <a href="team.html" class="dropdown-item">Our Team</a>                            
+                                    <a href="project.html" class="nav-item nav-link active">Projects</a>
                                     <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                                     <a href="faqs.html" class="dropdown-item">FAQs</a>
                                 </div>
@@ -104,6 +106,7 @@
             </div>
         </div>
         <!-- Navbar & Hero End -->
+
 
 
         <!-- Modal Search Start -->
@@ -356,20 +359,26 @@
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
 
-        
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    
+       
+      <!-- Hidden Google Translate widget -->
+<div id="google_translate_element" style="position:absolute; top:-9999px; left:-9999px;"></div>
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-    </body>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
 
+<!-- Your main JS (should always be last) -->
+<script src="js/main.js"></script>
+
+<!-- Google Translate API -->
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+</body>
 </html>
