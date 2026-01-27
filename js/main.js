@@ -10,7 +10,7 @@
 //         }, 1);
 //     };
 //     spinner(0);
-    
+
 //     // Initiate the wowjs
 //     new WOW().init();
 
@@ -120,7 +120,7 @@
 //     });
 
 
-    
+
 //    // Back to top button
 //    $(window).scroll(function () {
 //     if ($(this).scrollTop() > 300) {
@@ -218,7 +218,7 @@
     return;
   }
 
-    // ===============================
+  // ===============================
   // ✅ Google Translate Section (robust, non-invasive)
   // ===============================
   (function () {
@@ -430,7 +430,7 @@
               border: "none",
               display: "block"
             });
-          } catch (e) {}
+          } catch (e) { }
           // once iframe appears, hide spinner as well
           showSpinnerInPopup(false);
           clearInterval(poll);
@@ -585,45 +585,48 @@
   `;
   document.head.appendChild(style);
 
-document.getElementById("contactForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-  const form = e.target;
-  const submitBtn = document.getElementById("submitBtn");
+      const form = e.target;
+      const submitBtn = document.getElementById("submitBtn");
 
-  // Disable the button and show spinner
-  submitBtn.disabled = true;
-  const originalText = submitBtn.innerHTML;
-  submitBtn.innerHTML = `
+      // Disable the button and show spinner
+      submitBtn.disabled = true;
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = `
     <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
     Sending...
   `;
 
-  const formData = new FormData(form);
+      const formData = new FormData(form);
 
-  try {
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          alert("✅ Message sent successfully!");
+          form.reset();
+        } else {
+          alert("❌ Error: " + result.message);
+        }
+      } catch (error) {
+        alert("⚠️ Something went wrong. Please try again later.");
+        console.error("Error:", error);
+      } finally {
+        // Re-enable button
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
     });
-
-    const result = await response.json();
-
-    if (result.success) {
-      alert("✅ Message sent successfully!");
-      form.reset();
-    } else {
-      alert("❌ Error: " + result.message);
-    }
-  } catch (error) {
-    alert("⚠️ Something went wrong. Please try again later.");
-    console.error("Error:", error);
-  } finally {
-    // Re-enable button
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = originalText;
   }
-});
 
 })(window.jQuery);
 
