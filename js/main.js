@@ -585,6 +585,39 @@
   `;
   document.head.appendChild(style);
 
+  // ===============================
+  // ✅ Form Response Modal Helper
+  // ===============================
+  function showFormModal(type, title, message) {
+    const modalIcon = document.getElementById("formModalIcon");
+    const modalTitle = document.getElementById("formResponseModalLabel");
+    const modalMessage = document.getElementById("formModalMessage");
+    const modalHeader = document.getElementById("formModalHeader");
+
+    if (!modalIcon || !modalTitle || !modalMessage || !modalHeader) {
+      // Fallback to alert if modal elements are missing
+      alert(message);
+      return;
+    }
+
+    if (type === "success") {
+      modalIcon.textContent = "✅";
+      modalHeader.style.background = "linear-gradient(135deg, #06BBCC 0%, #0a9baa 100%)";
+    } else if (type === "error") {
+      modalIcon.textContent = "❌";
+      modalHeader.style.background = "linear-gradient(135deg, #dc3545 0%, #a71d2a 100%)";
+    } else {
+      modalIcon.textContent = "⚠️";
+      modalHeader.style.background = "linear-gradient(135deg, #ffc107 0%, #e0a800 100%)";
+    }
+
+    modalTitle.textContent = title;
+    modalMessage.textContent = message;
+
+    const modal = new bootstrap.Modal(document.getElementById("formResponseModal"));
+    modal.show();
+  }
+
   const contactForm = document.getElementById("contactForm");
   if (contactForm) {
     contactForm.addEventListener("submit", async function (e) {
@@ -612,13 +645,13 @@
         const result = await response.json();
 
         if (result.success) {
-          alert("✅ Message sent successfully!");
+          showFormModal("success", "Message Sent!", "Your message has been sent successfully. We'll get back to you soon.");
           form.reset();
         } else {
-          alert("❌ Error: " + result.message);
+          showFormModal("error", "Sending Failed", result.message || "Something went wrong. Please try again.");
         }
       } catch (error) {
-        alert("⚠️ Something went wrong. Please try again later.");
+        showFormModal("warning", "Connection Error", "Something went wrong. Please check your internet connection and try again.");
         console.error("Error:", error);
       } finally {
         // Re-enable button
