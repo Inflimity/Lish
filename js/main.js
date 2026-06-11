@@ -580,7 +580,8 @@
       from { opacity: 0; transform: scale(0.95); }
       to { opacity: 1; transform: scale(1); }
     }
-    .goog-te-banner-frame.skiptranslate { display: none !important; }
+    .goog-te-banner-frame.skiptranslate, #goog-gt-tt, .goog-te-balloon-frame, .goog-tooltip, .goog-tooltip:hover { display: none !important; visibility: hidden !important; }
+    .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
     body { top: 0 !important; }
   `;
   document.head.appendChild(style);
